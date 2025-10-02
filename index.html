@@ -1,80 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magpantay,Justine E. - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magpantay, Justine E. - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 20px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #007bff;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: #007bff;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Sections */
+    .about, .projects, .contact {
+      padding: 4rem 0;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .about {
+      background: #fff;
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+
+    .about p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #007bff;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 700;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background: #0056b3;
+    }
+
+    /* Projects */
+    .projects {
+      background: #f9f9f9;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .project-card img {
+      width: 50%;
+      border-radius: 300%;
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+
+    .project-card h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-link {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+    .contact {
+      background: #fff;
+      text-align: center;
+    }
+
+    .contact p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+
+    .contact-form button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #9d9dd2;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about, .projects, .contact {
+        padding: 2rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 10px;
+      }
+
+      .profile-img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="nav">
-            <div class="nav-container">
-                <h1 class="logo">Magpantay, Justine E.</h1>
-                <ul class="nav-menu">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#Hobbies">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="hamburger">☰</div>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <nav class="nav">
+      <div class="nav-container">
+        <h1 class="logo">Magpantay, Justine E.</h1>
+        <ul class="nav-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Hobbies</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">☰</div>
+      </div>
+    </nav>
+  </header>
 
-    <main>
-        <section id="about" class="about">
-            <div class="container">
-                <img src="/assets/1758801009800.jpg" alt="Profile photo of Your Name, a web developer" class="profile-img">
-                <h2>About Me</h2>
-                <p></p>
-                <a href="#contact" class="cta-button">Get in Touch</a>
-            </div>
-        </section>
+  <main>
+    <section id="about" class="about">
+      <div class="container">
+        <img src="/assets/1758801009800.jpg" alt="Profile photo of Justine Magpantay" class="profile-img">
+        <h2>About Me</h2>
+        <h1>Hello! I’m Justine Magpantay, a passionate and curious individual who loves exploring both the creative and technical sides of life. I enjoy expressing myself through singing and photography, capturing emotions in music and preserving memories through images. On the other hand, I also love to unwind by watching movies—especially romance and sci-fi—where I find inspiration, imagination, and fresh perspectives beyond everyday life. When I’m not pursuing my hobbies, I focus on learning new skills, exploring technology, and continuously growing as a person. I believe that combining creativity with curiosity allows me to see the beauty in small details and the possibilities in bigger dreams.</h1>
+        <a href="#contact" class="cta-button">Get in Touch</a>
+      </div>
+    </section>
 
-        <section id="projects" class="projects">
-            <div class="container">
-                <h2>"HOBBIES"</h2>
-                <div class="projects-grid">
-                    <article class="project-card">
-                        <img src="/assets/IMG_20251001_110709_570.webp" alt="Screenshot of hobby 1: A responsive e-commerce site ">
-                        <h3>Hobby 1: Unwind/Watching  Movies "Romance,Sci-Fi,"</h3>
-                        <p>Unwind/Nature trip,/ watching movies is one of the best ways to relax and escape from daily stress. Whether it’s the heart-fluttering emotions of romance films, where love stories bring warmth and inspiration, or the thrilling imagination of sci-fi movies, where futuristic worlds spark curiosity and wonder, both genres offer unique experiences. Together, they let us explore feelings, ideas, and possibilities beyond our everyday lives.</p>
-                        <a href="https://github.com/11252005/project1" class="project-link" target="_blank">View on GitHub</a>
-                    </article>
-                    <article class="project-card">
-                        <img src="/assets/IMG_20251001_113429_634.webp" alt="Screenshot of Project 2: A weather app dashboard">
-                        <h3>Hobby 2: Singing/Photography</h3>
-                        <p>singing and photography. Singing allows me to pour out my feelings through music, bringing joy and comfort to myself and others. On the other hand, photography lets me capture meaningful moments and preserve memories through images. Together, these hobbies give me both a voice to express emotions and a lens to see the beauty in life.</p>
-                        <a href="https://github.com/11252005/project2" class="project-link" target="_blank">View on GitHub</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Contact</h2>
-                <p>Let's connect! Email me at justinemagpantay39@gmail.com</p>
-                <form class="contact-form" id="contactForm">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                    <button type="submit" class="cta-button">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; THANK YOU. | <a href="#about">Back to Top</a></p>
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2>"HOBBIES"</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <img src="/assets/IMG_20251001_110709_570.webp" alt="Hobby 1: Watching Movies">
+            <h3>Hobby 1: Unwind/Watching Movies "Romance, Sci-Fi"</h3>
+            <p>Watching movies is one of the best ways to relax and escape from daily stress. Whether it’s the heart-fluttering emotions of romance films, where love stories bring warmth and inspiration, or the thrilling imagination of sci-fi movies, where futuristic worlds spark curiosity and wonder, both genres offer unique experiences.</p>
+            <a href="https://github.com/11252005/project1" class="project-link" target="_blank">View on GitHub</a>
+          </article>
+          <article class="project-card">
+            <img src="/assets/IMG_20251001_113429_634.webp" alt="Hobby 2: Singing and Photography">
+            <h3>Hobby 2: Singing/Photography</h3>
+            <p>Singing allows me to pour out my feelings through music, bringing joy and comfort to myself and others. On the other hand, photography lets me capture meaningful moments and preserve memories through images. Together, these hobbies give me both a voice to express emotions and a lens to see the beauty in life.</p>
+            <a href="https://github.com/11252005/project2" class="project-link" target="_blank">View on GitHub</a>
+          </article>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script src="js/main.js"></script>
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Let's connect! Email me at justinemagpantay39@gmail.com</p>
+        <form class="contact-form" id="contactForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+          <button type="submit" class="cta-button">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; THANK YOU. | <a href="#about">Back to Top</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Mobile hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Contact form validation
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e) {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        e.preventDefault();
+        alert('Please fill in all fields.');
+        return false;
+      }
+
+      alert('Thank you! Your message has been sent. (This is a demo; integrate with a form service.)');
+      this.reset(); // Clear form
+    });
+  </script>
 </body>
 </html>
