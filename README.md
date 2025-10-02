@@ -2,7 +2,7 @@
 # Justine E. Magpantay - Portfolio
 
 ## 👤 Short Bio
-Hi! I'm **Justine E. Magpantay**, a student passionate about technology, design, and continuous learning. This portfolio showcases my projects, skills, and personal background as I grow in the field of IT and web development.  
+Hi! I'm **Justine E. Magpantay**, a student passionate about singing , and adventuring, and continuous learning. This portfolio showcases my projects, skills, and personal background as I grow in the field of IT and web development.  
 
 # Portfolio Sections
 - About Me  
